@@ -1,6 +1,12 @@
 import React from 'react';
 
-export const ListTable = ({ groceryList, removeItem }) => (
+export const ListTable = ({
+  groceryList,
+  removeItem,
+  selectItem,
+  isItemSelected,
+  selectedItem
+}) => (
   <div className="listTable">
     <table>
       <thead>
@@ -15,7 +21,11 @@ export const ListTable = ({ groceryList, removeItem }) => (
       </thead>
       <tbody>
         {groceryList.map(item => (
-          <tr key={item.id}>
+          <tr
+            key={item.id}
+            style={selectedItem.id === item.id ? { background: 'gray', color: 'white' } : null}
+            onClick={() => isItemSelected && selectedItem.id === item.id ? null : selectItem(item.id)}
+          >
             <td><button onClick={() => removeItem(item.id)}>Remove</button></td>
             <td>{item.id}</td>
             <td>{item.name}</td>
