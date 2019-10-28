@@ -1,5 +1,5 @@
 import rootReducer from './reducers';
-import { initialState, ADD_ITEM, REMOVE_ITEM, SELECT_ITEM } from './ducks/groceries';
+import { initialState, ADD_ITEM, REMOVE_ITEM, SELECT_ITEM, DESELECT_ITEM } from './ducks/groceries';
 
 describe('groceries reducer', () => {
   it('should return the initial state', () => {
@@ -203,6 +203,66 @@ describe('groceries reducer', () => {
       rootReducer(startingState, {
         type: SELECT_ITEM,
         payload: 16
+      })
+    ).toEqual(expectedState);
+  });
+
+  it('should deselect grocery list item', () => {
+    const startingState = {
+      groceries: {
+        list: [
+          {
+            id: 66,
+            name: 'Bananas',
+            category: 'Fruit',
+            deliveryMethod: 'Air',
+          },
+          {
+            id: 16,
+            name: 'Whole Grain Bread',
+            category: 'Grains',
+            deliveryMethod: 'Air',
+          }
+        ],
+        isItemSelected: true,
+        selectedItem: {
+          id: 66,
+          name: 'Bananas',
+          category: 'Fruit',
+          deliveryMethod: 'Air',
+        },
+      }
+    };
+    const expectedState = {
+      groceries: {
+        list: [
+          {
+            id: 66,
+            name: 'Bananas',
+            category: 'Fruit',
+            deliveryMethod: 'Air',
+          },
+          {
+            id: 16,
+            name: 'Whole Grain Bread',
+            category: 'Grains',
+            deliveryMethod: 'Air',
+          }
+        ],
+        isItemSelected: false,
+        selectedItem: {
+          id: 0,
+          name: '',
+          category: '',
+          deliveryMethod: '',
+        },
+      }
+    };
+
+    expect(
+      rootReducer(startingState, {
+        type: DESELECT_ITEM,
+        payload: 66
       })
     ).toEqual(expectedState);
   });
