@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ListSelection from './components/ListSelection';
-import { initialState } from './ducks/groceries';
+import ListSelection from '../components/ListSelection';
+import { initialState } from '../ducks/groceries';
 
 describe('<ListSelection />', () => {
   it('renders without crashing', () => {

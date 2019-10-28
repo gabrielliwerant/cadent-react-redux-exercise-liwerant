@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ListInputs from './components/ListInputs';
-import { addItem } from './ducks/groceries';
+import ListInputs from '../components/ListInputs';
+import { addItem } from '../ducks/groceries';
 
 describe('<ListInputs />', () => {
   it('renders without crashing', () => {

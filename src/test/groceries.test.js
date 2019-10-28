@@ -1,5 +1,5 @@
-import rootReducer from './reducers';
-import { initialState, ADD_ITEM, REMOVE_ITEM, SELECT_ITEM, DESELECT_ITEM } from './ducks/groceries';
+import rootReducer from '../reducers';
+import { initialState, ADD_ITEM, REMOVE_ITEM, SELECT_ITEM, DESELECT_ITEM } from '../ducks/groceries';
 
 describe('groceries reducer', () => {
   it('should return the initial state', () => {

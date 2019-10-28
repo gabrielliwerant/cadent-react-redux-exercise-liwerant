@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ListTable from './components/ListTable';
-import { initialState, removeItem, selectItem, deselectItem } from './ducks/groceries';
+import ListTable from '../components/ListTable';
+import { initialState, removeItem, selectItem, deselectItem } from '../ducks/groceries';
 
 describe('<ListTable />', () => {
   it('renders without crashing', () => {
