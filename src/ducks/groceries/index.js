@@ -68,8 +68,10 @@ export default function reducer(state = initialState, action) {
       });
 
     case DESELECT_ITEM:
-      // Write a customer reducer that will deselect an item
-      return state;
+      return update(state, {
+        isItemSelected: { $set: false },
+        selectedItem: { $set: initialState.selectedItem }
+      });
 
     default:
       return state;
@@ -88,4 +90,7 @@ export const removeItem = id => ({
 export const selectItem = id => ({
   type: SELECT_ITEM,
   payload: id,
+});
+export const deselectItem = () => ({
+  type: DESELECT_ITEM
 });
