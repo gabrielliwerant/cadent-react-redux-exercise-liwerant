@@ -1,11 +1,12 @@
 import React from 'react';
 
-export const ListTable = props => (
+export const ListTable = ({ groceryList, removeItem }) => (
   <div className="listTable">
     <table>
       <thead>
         <tr><th>ListTable</th></tr>
         <tr>
+          <th>Actions</th>
           <th>Id</th>
           <th>Name</th>
           <th>Category</th>
@@ -13,12 +14,13 @@ export const ListTable = props => (
         </tr>
       </thead>
       <tbody>
-        {props.groceryList.map(grocery => (
-          <tr key={grocery.id}>
-            <td>{grocery.id}</td>
-            <td>{grocery.name}</td>
-            <td>{grocery.category}</td>
-            <td>{grocery.deliveryMethod}</td>
+        {groceryList.map(item => (
+          <tr key={item.id}>
+            <td><button onClick={() => removeItem(item.id)}>Remove</button></td>
+            <td>{item.id}</td>
+            <td>{item.name}</td>
+            <td>{item.category}</td>
+            <td>{item.deliveryMethod}</td>
           </tr>
         ))}
       </tbody>
