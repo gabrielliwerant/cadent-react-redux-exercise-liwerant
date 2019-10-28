@@ -67,8 +67,18 @@ class ListContainer extends Component {
 
 ListContainer.propTypes = {
   // Props
+  isItemSelected: PropTypes.bool.isRequired,
+  selectedItem: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    category: PropTypes.string,
+    deliveryMethod: PropTypes.string,
+  }).isRequired,
   // Actions
   addItem: PropTypes.func.isRequired,
+  removeItem: PropTypes.func.isRequired,
+  selectItem: PropTypes.func.isRequired,
+  deselectItem: PropTypes.func.isRequired,
   // Store
   groceryList: PropTypes.array.isRequired,
   // Other
