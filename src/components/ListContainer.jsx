@@ -46,7 +46,10 @@ class ListContainer extends Component {
           <ListInputs addItem={this.props.addItem} />
         </div>
         <div className="types">
-          <ListSelection />
+          <ListSelection
+            isItemSelected={this.props.isItemSelected}
+            selectedItem={this.props.selectedItem}
+          />
           <ListTable
             groceryList={this.props.groceryList}
             removeItem={this.props.removeItem}
