@@ -26,33 +26,40 @@ export const ListTable = ({
 
   return (
     <div className="listTable">
-      <table>
-        <thead>
-          <tr><th>ListTable</th></tr>
-          <tr>
-            <th>Actions</th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Delivery Method</th>
-          </tr>
-        </thead>
-        <tbody>
-          {groceryList.map(item => (
-            <tr
-              key={item.id}
-              style={selectedItem.id === item.id ? { background: 'gray', color: 'white' } : null}
-              onClick={handleSelectItem(item.id)}
-            >
-              <td><button onClick={handleRemoveItem(item.id)}>Remove</button></td>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.category}</td>
-              <td>{item.deliveryMethod}</td>
+      {groceryList.length ? (
+        <table>
+          <thead>
+            <tr><th>List Table</th></tr>
+            <tr>
+              <th>Actions</th>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Delivery Method</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {groceryList.map(item => (
+              <tr
+                key={item.id}
+                style={selectedItem.id === item.id ? { background: 'gray', color: 'white', cursor: 'pointer' } : {cursor: 'pointer'}}
+                onClick={handleSelectItem(item.id)}
+              >
+                <td><button onClick={handleRemoveItem(item.id)}>Remove</button></td>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.category}</td>
+                <td>{item.deliveryMethod}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div>
+          <div><strong>List Table</strong></div>
+          <span>No grocery list items available</span>
+        </div>
+      )}
     </div>
   );
 };
