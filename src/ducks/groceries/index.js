@@ -61,8 +61,11 @@ export default function reducer(state = initialState, action) {
       });
 
     case SELECT_ITEM:
-      // Write a custom reducer that will select an item
-      return state;
+      const selectedItem = state.list.find(item => item.id === payload);
+      return update(state, {
+        isItemSelected: { $set: true },
+        selectedItem: { $set: selectedItem }
+      });
 
     case DESELECT_ITEM:
       // Write a customer reducer that will deselect an item
@@ -80,5 +83,9 @@ export const addItem = item => ({
 });
 export const removeItem = id => ({
   type: REMOVE_ITEM,
+  payload: id,
+});
+export const selectItem = id => ({
+  type: SELECT_ITEM,
   payload: id,
 });
